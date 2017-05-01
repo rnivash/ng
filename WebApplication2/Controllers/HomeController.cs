@@ -13,5 +13,16 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
+
+
+        public PartialViewResult SalaryForm()
+        {
+            return PartialView();
+        }
+
+        public PartialViewResult SalaryListView()
+        {
+            return PartialView();
+        }
     }
 }

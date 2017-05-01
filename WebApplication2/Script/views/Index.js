@@ -15,6 +15,8 @@ app.controller("c1", function ($scope) {
             var nDate = new Date(my[1], parseInt(my[0])-1, 2);
             $scope.SalaryListLocal.push({ dt: nDate, am: $scope.salaryamt });         
             calc();
+            $scope.salaryMonthYear = "";
+            $scope.salaryamt = "";
         }
     }
 
@@ -47,19 +49,17 @@ app.controller("c1", function ($scope) {
 app.directive("salary", function () {
     return {
         controller: "c1",
-        template: "<div><input ng-model='salaryMonthYear' /> \
-        <input ng-model='salaryamt' /> \
-<button ng-click='addSalary()' >Add</button> <h1>{{TotalSalaryIncome}}</h1> \
-<salary-list></salary-list></div>",
-        replace: true
+        templateUrl: "SalaryForm",
+        replace: false
     };
 });
 
 
 app.directive("salaryList", function () {
     return {
+        scope: { SalaryListRemote: "=info"},
         controller: "c1",
-        template: "<ul ng-repeat='abc in SalaryList' ><li>{{abc.dt | date:'MMM yyyy'  }} RS.{{abc.am}}</li></ul>",
-        replace: true
+        templateUrl: "SalaryListView",
+        replace: false
     };
 });
