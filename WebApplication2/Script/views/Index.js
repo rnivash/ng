@@ -49,7 +49,7 @@ app.controller("c1", function ($scope) {
 app.directive("salary", function () {
     return {
         controller: "c1",
-        templateUrl: "SalaryForm",
+        templateUrl: "Home/SalaryForm",
         replace: false
     };
 });
@@ -59,7 +59,7 @@ app.directive("salaryList", function () {
     return {
         scope: { SalaryListRemote: "=info"},
         controller: "c1",
-        templateUrl: "SalaryListView",
+        templateUrl: "Home/SalaryListView",
         replace: false
     };
 });

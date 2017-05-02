@@ -1,3 +1,3 @@
-﻿<ul class='list-group' ng-repeat='abc in SalaryListRemote'>
-    <li class='list-group-item'>{{abc.dt | date:'MMM yyyy'  }} RS.{{abc.am}}</li>
+﻿<ul class='list-group' >
+    <li ng-repeat='abc in SalaryListRemote' class='list-group-item'>{{abc.dt | date:'MMM yyyy'  }} RS.<span class="label label-success">{{abc.am}}</span></li>
 </ul>
