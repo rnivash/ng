@@ -27,7 +27,7 @@
         <salary></salary>
         <script id="idofthedive" type="text/template">
             <table style="width:100%">
-                <tr ng-repeat='salary in SalaryListRemote' style="width:100%;" class='list-group-item'>
+                <tr ng-repeat='salary in SalaryListRemote track by $index' style="width:100%;" class='list-group-item'>
                     <td style="width:100%;">{{ salary.dt | date:'MMM yyyy'  }}</td>
                     <td style="width:100%;">
                         <span class="label label-success">{{ salary.am | indcurr }}</span>
@@ -107,8 +107,7 @@
     <script src="Script/lib/angular.js"></script>
     <script src="Script/lib/bootstrap.js"></script>
     <script src="Script/views/CurrencyFilter.js"></script>
+    <script src="Script/views/Storage.js"></script>
     <script src="Script/views/Index.js"></script>
 </body>
 </html>
-
-

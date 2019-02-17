@@ -1,5 +1,5 @@
 ﻿
-var app = angular.module("app1", []);
+var app = angular.module("app1", ["app"]);
 
 app.filter("indcurr", function () {
     return function (input) {
