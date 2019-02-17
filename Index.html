@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body ng-app="app1">
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Salary Sheet</a>
+            </div>
+        </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+
+    <div class="container">
+
+        <div class="alert alert-success" role="alert">Add your salary breakup by clicking "add salary"</div>
+        <salary></salary>
+        <script id="idofthedive" type="text/template">
+            <table style="width:100%">
+                <tr ng-repeat='salary in SalaryListRemote' style="width:100%;" class='list-group-item'>
+                    <td style="width:100%;">{{ salary.dt | date:'MMM yyyy'  }}</td>
+                    <td style="width:100%;">
+                        <span class="label label-success">{{ salary.am | indcurr }}</span>
+                    </td>
+                    <td ng-if="ShowDelete" style="width:100%;">
+                        <span class="glyphicon glyphicon-remove-sign" ng-click='delete1({it1 : salary})' style="cursor:pointer" aria-hidden="true"></span>
+                    </td>
+                </tr>
+            </table>
+        </script>
+
+        <script id="idsalaryformview" type="text/template">
+            <div class='row'>
+                <div class='col-xs-12 col-lg-6'>
+                    <div class='col-xs-12'>
+                        <p class="text-right" style="font-size:medium">
+                            <strong ng-if="TotalSalaryIncome != 0">
+                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                                <span class="label label-warning" style="font-size:medium">{{TotalSalaryIncome | indcurr}}</span>
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class='row'>&nbsp;</div>
+            <div class='row'>
+                <div class='col-xs-12 col-lg-6'>
+                    <div class='col-xs-12'>
+                        <div>
+                            <salary-list info="SalaryList" shdel="false" on-delete="delSalary(it1)"></salary-list>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-xs-12 col-lg-6'>
+                    <div class='col-xs-12'>
+                        <div>
+                            <salary-list info="SalaryListLocal" shdel="true" on-delete="delSalary(it1)"></salary-list>
+                        </div>
+                        <span class="glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#exampleModal" style="cursor:pointer;" aria-hidden="true"></span>
+                        <span class="label label-default" data-toggle="modal" data-target="#exampleModal" style="cursor:pointer;">Add Salary</span>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label class="control-label">Salary Month Year:</label>
+                                <input type='text' class='form-control' placeholder='Month/Years' ng-model='salaryMonthYear' />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Amount:</label>
+                                <input type='text' class='form-control' placeholder='Amount' ng-model='salaryamt' />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" ng-click='addSalary()' data-dismiss="modal">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+    </div><!--/.container-->
+    <script src="Script/lib/jquery-1.10.2.js"></script>
+    <script src="Script/lib/angular.js"></script>
+    <script src="Script/lib/bootstrap.js"></script>
+    <script src="Script/views/CurrencyFilter.js"></script>
+    <script src="Script/views/Index.js"></script>
+</body>
+</html>
+
+
